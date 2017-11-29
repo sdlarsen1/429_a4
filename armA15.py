@@ -78,7 +78,7 @@ Options.addSEOptions(parser)
 
 options.cpu_type = "detailed"   # The A15 is an OutOfOrder CPU
 options.cpu_clock = "2GHz"
-options.num_cpus = int(sys.argv[1])
+options.num_cpus = int(sys.argv[1]) + 1
 
 options.caches = 1              # Symmetric, L1 caches
 options.cacheline_size = 64
