@@ -9,11 +9,11 @@ for benchmark in "${benchmarks[@]}"; do
 	for input in "${inputs[@]}"; do
 		echo "-------------------- $input -----------------------"
 		# change this to match your file system
-		nice build/ARM/gem5.opt -d ./output/ configs/c429/armA15.py -c \
-		configs/c429/hashmark/$benchmark -o \
-		"$num_cpu configs/c429/$input"
+		nice build/ARM/gem5.opt -d ./output/ configs/c429/armA15.py $num_cpu \
+		-c configs/c429/hashmark/$benchmark \
+		-o "$num_cpu configs/c429/$input"
 
 		# change this part to match your file system
-		mv output/stats.txt ~/Documents/429_a4/output/stat_$benchmark_$input_$num_cpu.txt
+		mv output/stats.txt ~/Documents/429_a4/output/stat_${benchmark}_${input}_${num_cpu}.txt
 	done
 done
