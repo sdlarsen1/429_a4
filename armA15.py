@@ -78,7 +78,7 @@ Options.addSEOptions(parser)
 
 options.cpu_type = "detailed"   # The A15 is an OutOfOrder CPU
 options.cpu_clock = "2GHz"
-options.num_cpus = 9
+options.num_cpus = int(sys.argv[1])
 
 options.caches = 1              # Symmetric, L1 caches
 options.cacheline_size = 64
@@ -93,9 +93,9 @@ options.l2cache = 1
 options.l2_size = "4MB"
 options.l2_assoc = 1
 
-if args:
-    print "Error: script doesn't take any positional arguments"
-    sys.exit(1)
+# if args:
+#    print "Error: script doesn't take any positional arguments"
+#    sys.exit(1)
 
 ### Setup the workload to execute on the CPUs
 multiprocesses = []
@@ -186,11 +186,12 @@ system.cpu_clk_domain = SrcClockDomain(clock = options.cpu_clock,
 
 ### Reconfigure the CPU to match the Cortex A15 specs
 
-cpu = system.cpu[0]
-cpu.decodeWidth = 3     # 3 way superscalar frontend
-cpu.fetchWidth = 3
-cpu.issueWidth = 3
-cpu.dispatchWidth = 3
+for i in range(np):
+    cpu = system.cpu[i]
+    cpu.decodeWidth = 3     # 3 way superscalar frontend
+    cpu.fetchWidth = 3
+    cpu.issueWidth = 3
+    cpu.dispatchWidth = 3
 
 # run only 100 million instructions.
 # cpu.max_insts_any_thread = 100000000
