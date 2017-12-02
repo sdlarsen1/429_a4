@@ -1,6 +1,6 @@
 #!/bin/bash
 
-num_cpu=8
+num_cpu=2
 inputs=(500.txt 2000.txt)
 benchmarks=(hashmark-local.arm hashmark-global.arm hashmark-nolocks.arm)
 
