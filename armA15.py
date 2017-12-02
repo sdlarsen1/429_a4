@@ -195,7 +195,7 @@ for i in range(np):
 
 # run only 100 million instructions.
 # cpu.max_insts_any_thread = 100000000
-options.maxinsts = 100000000
+# options.maxinsts = 100000000
 
 #Functional Unit definitions taken from FuncUnitConfig.py, modified to match A9
 
